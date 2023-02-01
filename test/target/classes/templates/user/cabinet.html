@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html xmlns:th="http:/www.thymeleaf.org" xmlns:sec="https://www.thymeleaf.org/thymeleaf-extras-springsecurity5" lang="en">
+<head>
+  <meta charset="ISO-8859-1">
+  <title>Start</title>
+</head>
+<body>
+
+<div sec:authorize="isAuthenticated()">
+
+  <p>Hello <div sec:authentication="name"></div>
+  <p>Your role is <div sec:authentication="principal.authorities"></div></p>
+  <form th:action="@{/user/{id}/edit(id=${user.getId()})}">
+    <input type="submit" value="Update"/>
+  </form>
+  <form th:action="@{/blog}">
+    <input type="submit" value="Blogs"/>
+  </form>
+  <form th:action="@{/logout}">
+    <input type="submit" value="Logout"/>
+  </form>
+</div>
+</body>
+</html>

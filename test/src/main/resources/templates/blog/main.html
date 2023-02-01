@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://thymeleaf.org">
+<head>
+  <meta charset="UTF-8">
+  <title>Blogs</title>
+</head>
+<body>
+<div>
+    <form th:action="@{/blog/add}">
+        <input type="submit" value="Create news"/>
+    </form>
+    <form th:action="@{/user}">
+        <input type="submit" value="Back to cabinet"/>
+    </form>
+</div>
+
+<hr>
+<div th:each="blog : ${blogs}">
+    <p>Blog id is - > <span><a th:href="@{/blog/{id}(id=${blog.getId()})}" th:text="${blog.getId()}"></a></span> </p>
+    <p>Author id is - > <span th:text = "${blog.getAuthor()}">Author id </span> </p>
+    <p>News is - > <span th:text = "${blog.getNews()}">News </span></p>
+    <div th:if = "${user.getId() == blog.getAuthor()}">
+        <form th:action="@{/blog/{id}/edit(id=${blog.getId()})}">
+            <input type="submit" value="Edit news"/>
+        </form>
+        <form th:method = "DELETE" th:action="@{/blog/{id}/delete(id=${blog.getId()})}">
+            <input type="submit" value="Delete news"/>
+        </form>
+    </div>
+
+
+
+    <hr>
+</div>
+</form>
+
+</body>
+</html>

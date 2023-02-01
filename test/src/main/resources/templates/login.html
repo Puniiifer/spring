@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Login</title>
+</head>
+<body>
+<p>Login</p>
+<hr>
+<form  method="post" th:action = "@{/login}" th:object = "${user}">
+  <label for="login">Enter login: </label>
+  <input type="text"  th:field="*{login}" id="login" name = "login"/>
+  <br/>
+  <label for="password">Enter password: </label>
+  <input type="text" id="password" name = "password"/>
+  <br/>
+  <input type="submit" value="Login" />
+</form>
+<form th:action="@{/registration}">
+  <input type="submit" value="Registration"/>
+</form>
+</body>
+</html>

@@ -1,0 +1,17 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+  <meta charset="UTF-8">
+  <title>Update blog</title>
+</head>
+<body>
+
+<form th:method="PATCH" th:action="@{/blog/{id}(id=${blog.getId()})}" th:object="${blog}">
+  <label for="news">Enter news: </label>
+  <input type="text" th:field="*{news}" id="news"/>
+  <br/>
+  <input type="submit" value="Update!"/>
+</form>
+
+</body>
+</html>
